@@ -31,3 +31,6 @@ Capturas 320/390 px revisadas. Hero e elementos decorativos comprimidos no mobil
 
 ## QA de acessibilidade 28/10/2026
 Playwright testa Tab/Shift+Tab, navegação rápida para main com foco, rótulos e contraste computado de inputs e placeholders (mínimo 4,5:1), ações de toque e formulário com 44px de altura, e anel de foco. CSS em `a11y.css` mantém a identidade e os dados locais. Checagem automatizada direcionada, não certificação WCAG.
+
+## Navegação mobile de extrato
+Menu acessível em telas até 640 px com identidade de livro-caixa e atalhos para extrato, lançamentos e nova decisão. O extrato agora possui ID para navegação direta. Enter, Escape e links têm cobertura Playwright; nenhum dado/schema foi modificado.
