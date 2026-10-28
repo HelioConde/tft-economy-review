@@ -78,6 +78,29 @@ function renderGroups(){
   }
   if(config.metric)container.append(newNode("p","insights-warning","As médias vêm de anotações manuais e amostras pequenas. Compare apenas dentro do mesmo Set e patch; a colocação é do tabuleiro inteiro."));
 }
+function renderLedger(found){
+ const target=$("#economy-ledger");target.replaceChildren();
+ const groups=[...new Set(found.map(r=>r.session))].slice(0,5);
+ if(!groups.length){target.append(newNode("p","ledger-empty","Ainda não há decisões no filtro selecionado."));return;}
+ for(const name of groups){
+  const rows=found.filter(r=>r.session===name).sort((a,b)=>a.round.localeCompare(b.round,"pt-BR",{numeric:true})).slice(0,16);
+  const block=newNode("section","ledger-session");block.append(newNode("h3","",name));
+  const head=newNode("div","ledger-grid ledger-head");
+  for(const label of ["Rodada","Ação","Ouro / 200","Nível"])head.append(newNode("strong","",label));
+  block.append(head);
+  for(const r of rows){
+   const line=newNode("div","ledger-grid ledger-row");
+   line.append(newNode("span","ledger-round",r.round),newNode("span","ledger-action",r.action));
+   const amount=newNode("div","ledger-value"),bar=newNode("span","gold-track"),fill=newNode("span","gold-fill");
+   fill.style.width=(r.gold/200*100).toFixed(1)+"%";bar.append(fill);
+   amount.append(newNode("strong","",r.gold+" ouro"),bar);
+   line.append(amount,newNode("span","ledger-level",r.level));
+   block.append(line);
+  }
+  target.append(block);
+ }
+ if(found.length>80)target.append(newNode("p","ledger-empty","Visualização limitada às cinco primeiras sessões e 16 rodadas por sessão. Exporte JSON para acessar todos os registros."));
+}
 function recordCard(r){
  const article=newNode("article","entry-card");
  const head=newNode("div","card-head"),title=newNode("h3","",r[config.titleField]);
@@ -99,6 +122,7 @@ function render(){
  renderGroups();const search=elements.search.value.trim().toLocaleLowerCase("pt-BR"),group=elements.filter.value;
  const found=[...records].sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt)).filter(r=>(!group||keyOf(r)===group)&&(!search||keys.some(k=>String(r[k]).toLocaleLowerCase("pt-BR").includes(search))));
  elements.entries.replaceChildren(...found.map(recordCard));
+ renderLedger(found);
  $("#total").textContent=records.length;
  $("#groups-total").textContent=new Set(records.map(keyOf).values()).size;
  $("#visible-total").textContent=found.length;

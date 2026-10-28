@@ -22,3 +22,6 @@ GitHub Actions executa testes estáticos e Playwright em 320, 390, 768, 1366, 16
 
 ## Direção visual exclusiva
 Livro-caixa de economia: reestruturação da hierarquia, cartões, densidade e tratamento de dados em `identity.css`, preservando o núcleo JS e o LocalStorage. QA visual com cinco resoluções.
+
+## Extrato econômico (interface específica)
+Resumo `Ouro por rodada` agrupa até 5 sessões e 16 decisões por sessão, ordenadas por rodadas numéricas. Barras mostram ouro manual na escala **0–200** sem interpolar valores nem alegar dados em tempo real; filtros de sessão/busca são aplicados. Playwright verifica barras e filtro depois de recarregar. O backup original é preservado.
