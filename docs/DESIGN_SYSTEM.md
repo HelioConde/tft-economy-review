@@ -19,3 +19,6 @@ Cada registro é validado conforme os campos do produto; backups versionados `{a
 
 ## QA e GitHub Pages
 GitHub Actions executa testes estáticos e Playwright em 320, 390, 768, 1366, 1600 px, capturas de página inteira, fluxos de exemplos, edição, persistência, exportação, exclusão e overflow. Publicação estática por `gh-pages/(root)` sem build de runtime; a configuração de Pages da conta pode exigir habilitação manual.
+
+## Direção visual exclusiva
+Livro-caixa de economia: reestruturação da hierarquia, cartões, densidade e tratamento de dados em `identity.css`, preservando o núcleo JS e o LocalStorage. QA visual com cinco resoluções.
