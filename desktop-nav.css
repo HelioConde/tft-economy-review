@@ -1,0 +1,8 @@
+/* Accessible tft-economy-review contextual navigation in desktop header. */
+@media(min-width:641px){
+header .nav{gap:clamp(8px,1.5vw,22px)}
+header nav.nav-links{display:flex;align-items:center;gap:clamp(2px,.7vw,12px);min-width:0;margin-left:auto}
+header nav.nav-links a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:4px clamp(4px,.6vw,12px);font:850 clamp(11px,1.13vw,14px) system-ui;color:#ebffe9;white-space:nowrap;text-decoration:none}
+header nav.nav-links a:hover{box-shadow:inset 0 -3px 0 #8ed4b2;background:#8ed4b216}
+}
+@media(min-width:641px) and (max-width:990px){header .demo-pill{display:none!important}header .brand{max-width:45%;white-space:normal}}
