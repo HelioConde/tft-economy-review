@@ -17,6 +17,18 @@ const sleep=n=>new Promise(resolve=>setTimeout(resolve,n));
    const response=await page.goto("http://127.0.0.1:8755/",{waitUntil:"load"});if(response.status()!==200)errors.push("Home status "+response.status());
    await page.getByRole("heading",{level:1}).waitFor();
     await auditAccessibility(page,errors);
+   const menu=page.locator("header details.mobile-nav");
+   if(page.viewportSize().width<=640){
+    if(!await menu.isVisible())errors.push("Ledger mobile menu hidden");
+    const summary=menu.locator("summary");await summary.focus();await page.keyboard.press("Enter");
+    if(!await menu.evaluate(el=>el.open))errors.push("Enter did not open ledger menu");
+    if(await menu.locator("nav a").count()!==3)errors.push("Ledger menu incomplete");
+    await page.keyboard.press("Escape");if(await menu.evaluate(el=>el.open))errors.push("Escape did not close menu");
+    await summary.click();const destination=await menu.locator("nav a").first().getAttribute("href");await menu.locator("nav a").first().click();
+    if(await menu.evaluate(el=>el.open))errors.push("Menu did not close after selection");
+    if(await page.evaluate(()=>location.hash)!==destination)errors.push("Ledger menu destination mismatch");
+   }else if(await menu.isVisible())errors.push("Mobile ledger menu visible on desktop");
+
    const skip=page.locator("a.skip,a.skip-link");
    if(await skip.count()!==1)errors.push("Missing unique keyboard skip link");
    else{const before=await skip.evaluate(el=>getComputedStyle(el).clipPath);

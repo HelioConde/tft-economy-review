@@ -1,0 +1,13 @@
+/* Finance-ledger mobile menu, mono type and sage green. */
+.mobile-nav{display:none}
+@media(max-width:640px){
+.header .nav{gap:8px}.header .demo-pill{display:none!important}.header .brand{max-width:calc(100% - 66px);min-width:0}
+.header .mobile-nav{display:block;position:relative;z-index:90;flex:none;margin-left:auto}
+.header .mobile-nav summary{list-style:none;display:flex;align-items:center;justify-content:center;gap:6px;min-width:58px;min-height:48px;padding:8px;background:#bde6be;color:#124638;border:2px solid #83c99a;border-radius:3px;font:900 11px ui-monospace,monospace;cursor:pointer}
+.header .mobile-nav summary::-webkit-details-marker{display:none}.header .mobile-nav summary::before{content:"☰";font-size:18px;line-height:1}.header .mobile-nav[open] summary::before{content:"×";font-size:23px}
+.header .mobile-nav .mobile-nav-panel{display:grid!important;position:absolute;right:0;top:calc(100% + 7px);z-index:91;width:min(265px,calc(100vw - 30px));padding:7px;background:#f3f9ee;border:2px solid #4d9579;border-radius:4px;box-shadow:4px 5px 0 #0c3a2d}
+.header .mobile-nav-panel a{display:flex;align-items:center;min-height:48px;padding:10px 12px;text-decoration:none;border-bottom:1px solid #bdd3bf;color:#174f3d;font:850 13px ui-monospace,monospace;white-space:normal}
+.header .mobile-nav-panel a:hover{background:#dbeedd}
+.header .mobile-nav :is(summary,a):focus-visible{outline:3px solid #f0c560!important;outline-offset:3px}
+#extrato{scroll-margin-top:18px}
+}
