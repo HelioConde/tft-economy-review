@@ -34,3 +34,6 @@ Playwright testa Tab/Shift+Tab, navegação rápida para main com foco, rótulos
 
 ## Navegação mobile de extrato
 Menu acessível em telas até 640 px com identidade de livro-caixa e atalhos para extrato, lançamentos e nova decisão. O extrato agora possui ID para navegação direta. Enter, Escape e links têm cobertura Playwright; nenhum dado/schema foi modificado.
+
+## Navegação contextual desktop
+Destinos: Extrato, Lançamentos, Nova decisão. Testes Playwright garantem todos os IDs existentes, navegação ao primeiro recurso e ausência de menu desktop nas larguras mobile. Badge decorativo removido no tablet estreito. CSS independente da versão mobile.
