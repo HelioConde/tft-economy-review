@@ -25,3 +25,6 @@ Livro-caixa de economia: reestruturação da hierarquia, cartões, densidade e t
 
 ## Extrato econômico (interface específica)
 Resumo `Ouro por rodada` agrupa até 5 sessões e 16 decisões por sessão, ordenadas por rodadas numéricas. Barras mostram ouro manual na escala **0–200** sem interpolar valores nem alegar dados em tempo real; filtros de sessão/busca são aplicados. Playwright verifica barras e filtro depois de recarregar. O backup original é preservado.
+
+## Auditoria de screenshots mobile (28/10/2026)
+Capturas 320/390 px revisadas. Hero e elementos decorativos comprimidos no mobile para priorizar dados e ações de produto. Link de navegação rápida continua acessível pelo teclado, recortado fora do foco. Testes incluem validação de foco e regressão responsiva em cinco resoluções.
